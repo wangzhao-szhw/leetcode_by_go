@@ -8,28 +8,11 @@ var (
 	dy = []int{-1, 1, 0, 0}
 )
 
-func dfs(image [][]int, x int, y int, color int, new int) {
-	image[x][y] = new
-	for i := 0; i < 4; i++ {
-		xm, ym := x+dx[i], y+dy[i]
-		if xm >= 0 && xm < len(image) && ym >= 0 && ym < len(image[0]) && image[xm][ym] == color {
-			dfs(image, xm, ym, color, new)
-		}
-	}
-}
-func floodFill(image [][]int, sr int, sc int, newColor int) [][]int {
-	curColor := image[sr][sc]
-	if image[sr][sc] != newColor {
-		dfs(image, sr, sc, curColor, newColor)
-	}
-	return image
-}
-
 //广度优先搜索
 func floodFill2(image [][]int, sr int, sc int, newColor int) [][]int {
 	n := len(image)
 	m := len(image[0])
-	que := [][]int{}
+	var que [][]int
 	curColor := image[sr][sc]
 	if curColor == newColor {
 		return image
@@ -50,16 +33,15 @@ func floodFill2(image [][]int, sr int, sc int, newColor int) [][]int {
 
 }
 func main() {
-	x := [][]int{}
-	x[0] = []int{1, 1, 1}
-	x[1] = []int{1, 1, 0}
-	x[2] = []int{1, 0, 1}
+	var x [][]int
+
+	x = [][]int{{1, 1, 1}, {1, 1, 0}, {1, 0, 1}}
+
 	sr := 1
 	sc := 1
 	newColor := 2
-	res1 := floodFill(x, sr, sc, newColor)
 	res2 := floodFill2(x, sr, sc, newColor)
-	fmt.Println(res1)
+
 	fmt.Println(res2)
 
 }
