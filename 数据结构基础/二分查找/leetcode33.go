@@ -16,6 +16,7 @@ func lengthOfLongestSubstring(s string) int {
 			}
 			dic[s[i]] = i
 		}
+		//////////////////////
 		if l < i-start+1 {
 			l = i - start + 1
 		}
