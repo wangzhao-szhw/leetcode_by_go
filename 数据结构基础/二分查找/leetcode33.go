@@ -23,7 +23,7 @@ func lengthOfLongestSubstring(s string) int {
 	return l
 }
 func main() {
-	s := "abcabcbb"
+	s := "abcabceewdbb"
 	res := lengthOfLongestSubstring(s)
 	fmt.Print(res)
 }
